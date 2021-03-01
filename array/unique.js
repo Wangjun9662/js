@@ -46,7 +46,6 @@ function unique4(arr) {
         // 但是JSON.stringify()会将正则转换为‘{}’，这样就会和{}一起被去重，所以将typeof换为更加精确的类型判断
         // const key = typeof item + JSON.stringify(item);
         const key = Object.prototype.toString.call(item) + JSON.stringify(item);
-        console.log(key);
         return obj.hasOwnProperty(key) ? false : (obj[key] = true);
     });
 }
