@@ -1,4 +1,4 @@
-##### 餐卡文档：https://juejin.cn/post/6844903854882947080#heading-4
+##### 参考文档：https://juejin.cn/post/6844903854882947080#heading-4
 
 #### js 数据类型
 
@@ -111,7 +111,7 @@ undefined
 #### Symbol()
 
 特点：
-1、每个 Symbol 值都是唯一的，如果想穿件两个相等的 Symbol，可以使用 Symbol.for(key)，传入同一个 key
+1、每个 Symbol 值都是唯一的，如果想创建两个相等的 Symbol，可以使用 Symbol.for(key)，传入同一个 key
 2、原始数据类型，使用 Symbol()函数创建，不能使用 new
 3、使用 for...in 循环、Object.keys()、Object.getOwnPropertyNames()无法获取 Symbol 属性，可以使用 Object.getOwnPropertySymbols()获取 Symbol 属性
 

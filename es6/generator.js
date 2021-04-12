@@ -1,7 +1,5 @@
 // 自动执行generator的函数
 
-const { resolve } = require('path');
-
 // 第一版
 function run(gen) {
     // 遍历器iterator对象

@@ -79,3 +79,29 @@ const a = {
     },
 };
 console.log(a == 1 && a == 2 && a == 3);
+
+
+
+Function.prototype.myCall2 = function (context, ...args) {
+    if (typeof this !== 'function') {
+        throw new Error('error');
+    }
+    const symbol = new Symbol();
+    context[symbol] = this;
+    const value = context[symbol](...args);
+    delete context[symbol];
+
+    return value;
+}
+
+Function.prototype.myApply2 = function (context, ...args) {
+    if (typeof this !== 'function') {
+        throw new Error('error');
+    }
+    const fn = new Symbol();
+    context[fn] = this;
+    const value = context[symbol](...args);
+
+    delete context[fn];
+    return value;
+}

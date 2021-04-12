@@ -3,7 +3,7 @@
 /**
  * 原型链继承
  *
- * 缺点：1、引用类型的属性被所有实例共享；2、创建子类的实例时，没法向父类传参。
+ * 缺点：1、父类引用类型的属性被所有实例共享；2、创建子类的实例时，没法向父类传参。
  * **/
 function Person(name, hobbies) {
     this.name = name;
@@ -28,7 +28,7 @@ function Person2(name, hobbies) {
     this.fn = function () {};
 }
 function Teacher(name, hobbies) {
-    Person2.call(this, 'jason', ['sports', 'music']);
+    Person2.call(this, name, hobbies);
 }
 /**
  * 组合继承
@@ -44,7 +44,7 @@ Person3.prototype.sayHi = function () {};
 
 function Teacher(name, hobbies) {
     // 继承实例属性和方法
-    Person.call(this, 'jason', ['sports', 'music']);
+    Person.call(this, name, hobbies);
 }
 // 继承原型方法
 Teacher.prototype = new Person3('jason', ['sports', 'music']);
