@@ -107,6 +107,62 @@ function parseBody(req, res) {
 
 // 路由解析
 const routes = [];
-function use(path, action) {
-    routes.push([path, action]);
+// 将动态路由路径转化为正则表达式，匹配动态路由等。
+const pathRegExp = function (path) {
+    return new RegExp();
 }
+function use(path, action) {
+    routes.push([pathRegExp(path), action]);
+}
+
+
+
+
+const app = http.createServer(callback());
+// 中间件
+function callback() {
+    // this.middleware存储中间件
+    const fn = compose(this.middlewares);
+
+    const handleRequest = function(req, res) {
+        const ctx = this.createContext(req, res);
+        return this.handleRequest(ctx, fn);
+    }
+
+    return handleRequest;
+}
+
+// 请求回调函数
+function handleRequest(ctx, fn) {
+
+    return fn(ctx).then(() => respond(ctx)).catch();
+}
+
+// 组合中间件
+function compose(middlewares) {
+    return function (ctx, next) {
+        let index = -1;
+        return dispatch(0);
+
+        function dispatch(i) {
+            const fn = middlewares[i];
+            index = i;
+            if (index === middlewares.length) {
+                fn = next;
+            }
+            // 最终是业务回调函数
+            if (!fn) {
+                return Promise.resolve();
+            }
+
+            try {
+                return Promise.resolve(fn(ctx, dispatch(i + 1)));
+            }
+            catch (e) {
+                return Promise.reject(e);
+            }
+        }
+    }
+}
+
+

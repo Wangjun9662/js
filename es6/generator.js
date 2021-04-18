@@ -31,7 +31,7 @@ function run(gen) {
     }
 
     if (!g || typeof g.next !== 'function') {
-        return resolve(gen);
+        return Promise.resolve(gen);
     }
 
     return new Promise((resolve, reject) => {
