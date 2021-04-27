@@ -86,7 +86,7 @@ Function.prototype.myCall2 = function (context, ...args) {
     if (typeof this !== 'function') {
         throw new Error('error');
     }
-    const symbol = new Symbol();
+    const symbol = Symbol();
     context[symbol] = this;
     const value = context[symbol](...args);
     delete context[symbol];
@@ -98,7 +98,7 @@ Function.prototype.myApply2 = function (context, ...args) {
     if (typeof this !== 'function') {
         throw new Error('error');
     }
-    const fn = new Symbol();
+    const fn = Symbol();
     context[fn] = this;
     const value = context[symbol](...args);
 

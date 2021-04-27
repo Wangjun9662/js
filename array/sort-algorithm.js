@@ -1,4 +1,4 @@
-// 排序算法：猫婆、选择、插入、归并、快排
+// 排序算法：冒泡、选择、插入、归并、快排
 
 // 冒泡排序
 // 每次比较相邻的两项，如果前面的大于后面的，则交换2者的位置
@@ -18,7 +18,7 @@ const arr = [5, 9, 10, 20, 1, 3, 6, 9, 14, 19, 34, 24, 2, 7];
 console.log('arr', bubbleSort(arr));
 
 // 选择排序
-// 第一次选出最小的，第二次选出第二小的，一次类推
+// 第一次选出最小的，第二次选出第二小的，以此类推
 function pickSort(arr) {
     const len = arr.length;
     // 假设第一项是最小的
@@ -145,7 +145,7 @@ function quickSort2(arr, start, end) {
 // 将一个数组在原数组上以pivot为分界点变为一边比pivot小，一边比pivot大
 // 首先获取pivot，然后找出左边第一个比pivot小的，右边第一个比pivot大，两者交换位置，最终把数组分割为一边是比pivot小的，一边是比pivot大的
 function partion(arr, start, end) {
-    const pivotIdx = Math.floor((start + end) / 2);
+    const pivotIdx = Math.floor((end - start) / 2 + start);
     const pivot = arr[pivotIdx];
     let i = start,
         j = end;
